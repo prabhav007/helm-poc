@@ -48,7 +48,6 @@ Selector labels
 {{- define "spring-boot-poc.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "spring-boot-poc.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-backstage.io/kubernetes-id: spring-boot-poc
 {{- end }}
 
 {{/*

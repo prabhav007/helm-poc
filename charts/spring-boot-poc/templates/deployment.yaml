@@ -4,6 +4,7 @@ metadata:
   name: {{ include "spring-boot-poc.fullname" . }}
   labels:
     {{- include "spring-boot-poc.labels" . | nindent 4 }}
+    backstage.io/kubernetes-id: spring-boot-poc
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -19,6 +20,7 @@ spec:
       {{- end }}
       labels:
         {{- include "spring-boot-poc.selectorLabels" . | nindent 8 }}
+        backstage.io/kubernetes-id: spring-boot-poc
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
