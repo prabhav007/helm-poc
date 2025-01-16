@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "spring-boot-poc.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "spring-boot-poc.fullname" . }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      interval: 10s
