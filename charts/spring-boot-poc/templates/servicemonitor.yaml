@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ include "spring-boot-poc.fullname" . }}
+      {{- include "spring-boot-poc.selectorLabels" . | nindent 6 }}
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
